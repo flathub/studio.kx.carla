@@ -46,51 +46,158 @@
   ],
   "build-options": {
     "env": {
+      "PYTHON": "/usr/bin/python3",
+      "PIP": "/usr/bin/pip3",
       "PIP_DISABLE_PIP_VERSION_CHECK": "1"
     }
   },
   "modules": [
     "shared-modules/linux-audio/fluidsynth2.json",
     {
-      "name": "pyqt5",
-      "config-opts": [
-        "--disable-static",
-        "--enable-x11"
+      "name": "pyqt",
+      "buildsystem": "simple",
+      "build-commands": [
+        ". ${FLATPAK_BUILDER_BUILDDIR}/build"
       ],
       "sources": [
         {
           "type": "archive",
-          "url": "https://files.pythonhosted.org/packages/4d/81/b9a66a28fb9a7bbeb60e266f06ebc4703e7e42b99e3609bf1b58ddd232b9/PyQt5-5.14.2.tar.gz",
-          "sha256": "bd230c6fd699eabf1ceb51e13a8b79b74c00a80272c622427b80141a22269eb0"
+          "url": "https://files.pythonhosted.org/packages/3b/27/fd81188a35f37be9b3b4c2db1654d9439d1418823916fe702ac3658c9c41/PyQt5-5.15.6.tar.gz",
+          "sha256": "80343bcab95ffba619f2ed2467fd828ffeb0a251ad7225be5fc06dcc333af452",
+          "x-checker-data": {
+            "type": "pypi",
+            "name": "pyqt5"
+          }
         },
         {
-          "type": "script",
+          "type": "file",
+          "path": "pyqt-build",
+          "dest-filename": "build"
+        },
+        {
+          "type": "shell",
           "commands": [
-            "python3 configure.py --assume-shared --confirm-license --no-designer-plugin --no-qml-plugin --sysroot=/app --qsci-api --qsci-api-destdir=/app/qsci --sipdir=/app/share/sip --sip=/app/bin/sip --sip-incdir=/app/include QMAKE_CFLAGS_RELEASE='-I/usr/include/python3.9/' QMAKE_CXXFLAGS_RELEASE='-I/usr/include/python3.9/'"
+            "echo '[tool.sip.bindings.QtGui]' >> pyproject.toml",
+            "echo 'disabled-features = [\"PyQt_Desktop_OpenGL\"]' >> pyproject.toml"
           ],
-          "dest-filename": "configure"
+          "only-arches": [
+            "aarch64"
+          ]
         }
+      ],
+      "cleanup": [
+        "/bin"
       ],
       "modules": [
         {
-          "name": "sip",
+          "name": "python-pyparsing",
+          "buildsystem": "simple",
+          "build-commands": [
+            "${PIP} install --no-build-isolation --verbose --prefix=${FLATPAK_DEST} ."
+          ],
+          "cleanup": [
+            "*"
+          ],
           "sources": [
             {
               "type": "archive",
-              "url": "https://distfiles.macports.org/py-sip/sip-4.19.22.tar.gz",
-              "sha256": "e1b768824ec1a2ee38dd536b6b6b3d06de27b00a2f5f55470d1b512306e3be45"
-            },
-            {
-              "type": "script",
-              "commands": [
-                "python3 configure.py --sip-module PyQt5.sip -b ${FLATPAK_DEST}/bin -d ${FLATPAK_DEST}/lib/python3.9/site-packages -e ${FLATPAK_DEST}/include -v ${FLATPAK_DEST}/share/sip --stubsdir=${FLATPAK_DEST}/lib/python3.9/site-packages"
-              ],
-              "dest-filename": "configure"
+              "url": "https://files.pythonhosted.org/packages/source/p/pyparsing/pyparsing-2.4.7.tar.gz",
+              "sha256": "c203ec8783bf771a155b207279b9bccb8dea02d8f0c9e5f8ead507bc3246ecc1"
             }
+          ]
+        },
+        {
+          "name": "python-packaging",
+          "buildsystem": "simple",
+          "build-commands": [
+            "${PIP} install --no-build-isolation --verbose --prefix=${FLATPAK_DEST} ."
           ],
           "cleanup": [
-            "/bin",
-            "/include"
+            "*"
+          ],
+          "sources": [
+            {
+              "type": "archive",
+              "url": "https://files.pythonhosted.org/packages/source/p/packaging/packaging-20.9.tar.gz",
+              "sha256": "5b327ac1320dc863dca72f4514ecc086f31186744b84a230374cc1fd776feae5"
+            }
+          ]
+        },
+        {
+          "name": "python-toml",
+          "buildsystem": "simple",
+          "build-commands": [
+            "${PIP} install --no-build-isolation --verbose --prefix=${FLATPAK_DEST} ."
+          ],
+          "cleanup": [
+            "*"
+          ],
+          "sources": [
+            {
+              "type": "archive",
+              "url": "https://files.pythonhosted.org/packages/source/t/toml/toml-0.10.2.tar.gz",
+              "sha256": "b3bda1d108d5dd99f4a20d24d9c348e91c4db7ab1b749200bded2f839ccbe68f"
+            }
+          ]
+        },
+        {
+          "name": "sip",
+          "buildsystem": "simple",
+          "build-commands": [
+            "${PIP} install --no-build-isolation --verbose --prefix=${FLATPAK_DEST} ."
+          ],
+          "cleanup": [
+            "*"
+          ],
+          "sources": [
+            {
+              "type": "archive",
+              "url": "https://files.pythonhosted.org/packages/c4/de/76c2927ea8f74dc4909c9affeba4c0191c43a4aefbe2118cc69b2cbd8461/sip-6.4.0.tar.gz",
+              "sha256": "42ec368520b8da4a0987218510b1b520b4981e4405086c1be384733affc2bcb0",
+              "x-checker-data": {
+                "type": "pypi",
+                "name": "sip"
+              }
+            }
+          ]
+        },
+        {
+          "name": "pyqt-sip",
+          "buildsystem": "simple",
+          "build-commands": [
+            "${PIP} install --no-build-isolation --verbose --prefix=${FLATPAK_DEST} ."
+          ],
+          "sources": [
+            {
+              "type": "archive",
+              "url": "https://files.pythonhosted.org/packages/b1/40/dd8f081f04a12912b65417979bf2097def0af0f20c89083ada3670562ac5/PyQt5_sip-12.9.0.tar.gz",
+              "sha256": "d3e4489d7c2b0ece9d203ae66e573939f7f60d4d29e089c9f11daa17cfeaae32",
+              "x-checker-data": {
+                "type": "pypi",
+                "name": "pyqt5-sip"
+              }
+            }
+          ]
+        },
+        {
+          "name": "pyqt-builder",
+          "buildsystem": "simple",
+          "build-commands": [
+            "${PIP} install --no-build-isolation --verbose --prefix=${FLATPAK_DEST} ."
+          ],
+          "cleanup": [
+            "*"
+          ],
+          "sources": [
+            {
+              "type": "archive",
+              "url": "https://files.pythonhosted.org/packages/8b/5f/1bd49787262ddce37b826ef49dcccf5a9970facf0ed363dee5ee233e681d/PyQt-builder-1.12.2.tar.gz",
+              "sha256": "f62bb688d70e0afd88c413a8d994bda824e6cebd12b612902d1945c5a67edcd7",
+              "x-checker-data": {
+                "type": "pypi",
+                "name": "pyqt-builder"
+              }
+            }
           ]
         }
       ]
