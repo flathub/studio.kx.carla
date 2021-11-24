@@ -119,9 +119,15 @@
       ],
       "sources": [
         {
-          "type": "archive",
-          "url": "https://github.com/falkTX/Carla/archive/v2.4.1.tar.gz",
-          "sha256": "bbb188a672ea8871b11648d36770ba013497d03407ca9c73ed68429016f7536f"
+          "type": "git",
+          "url": "https://github.com/falkTX/Carla.git",
+          "tag": "v2.4.1",
+          "commit": "51028655d09c9a21fc51cadd7bc48210295aa791",
+          "x-checker-data": {
+            "type": "git",
+            "tag-pattern": "^v([\\d.]+)$",
+            "is-main-source": true
+          }
         },
         {
           "type": "file",
