@@ -124,8 +124,7 @@
           "commit": "51028655d09c9a21fc51cadd7bc48210295aa791",
           "x-checker-data": {
             "type": "git",
-            "tag-pattern": "^v([\\d.]+)$",
-            "is-main-source": true
+            "tag-pattern": "^v([\\d.]+)$"
           }
         },
         {
