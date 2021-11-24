@@ -212,7 +212,7 @@
       ],
       "build-options": {
         "env": {
-          "PYTHONPATH": "$PYTHONPATH:/app/lib/python3.9/site-packages"
+          "PYTHONPATH": "/app/lib/python3.9/site-packages"
         },
         "arch": {
           "aarch64": {
