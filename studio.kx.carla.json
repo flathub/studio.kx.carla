@@ -57,7 +57,7 @@
       "name": "pyqt",
       "buildsystem": "simple",
       "build-commands": [
-        ". ${FLATPAK_BUILDER_BUILDDIR}/build"
+        "./build"
       ],
       "sources": [
         {
