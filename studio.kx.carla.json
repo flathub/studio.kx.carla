@@ -48,8 +48,7 @@
     "env": {
       "PYTHON": "/usr/bin/python3",
       "PIP": "/usr/bin/pip3",
-      "PIP_DISABLE_PIP_VERSION_CHECK": "1",
-      "PYTHONPATH": "$PYTHONPATH:/app/lib/python3.9/site-packages"
+      "PIP_DISABLE_PIP_VERSION_CHECK": "1"
     }
   },
   "modules": [
@@ -212,6 +211,9 @@
         "make PREFIX=/app install"
       ],
       "build-options": {
+        "env": {
+          "PYTHONPATH": "$PYTHONPATH:/app/lib/python3.9/site-packages"
+        },
         "arch": {
           "aarch64": {
             "env": {
