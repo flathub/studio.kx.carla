@@ -19,10 +19,7 @@
     "--filesystem=home",
     "--env=TMPDIR=/var/tmp",
     /* On SuSE it seems to be necessary for sound to work */
-    "--env=ALSA_CONFIG_PATH=",
-    "--env=LADSPA_PATH=/app/extensions/Plugins/ladspa:/app/lib/ladspa",
-    "--env=VST_PATH=/app/extensions/Plugins/lxvst",
-    "--env=DSSI_PATH=/app/extensions/Plugins/dssi"
+    "--env=ALSA_CONFIG_PATH="
   ],
   "add-extensions": {
     "org.freedesktop.LinuxAudio.Plugins": {
