@@ -18,6 +18,7 @@ sip-install \
     --enable=QtGui \
     --enable=QtMultimedia \
     --enable=QtWidgets \
+    --enable=QtSvg \
     --enable=pyrcc \
     --no-dbus-python \
     --no-designer-plugin \
