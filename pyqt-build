@@ -1,0 +1,27 @@
+#!/usr/bin/env sh
+
+PYTHON_VERSION=$(${PYTHON} -c 'import sys; print(sys.version[:3])')
+
+sip-install \
+    --qt-shared \
+    --concatenate 1 \
+    --confirm-license \
+    --verbose \
+    --jobs="${FLATPAK_BUILDER_N_JOBS}" \
+    --build-dir="${FLATPAK_BUILDER_BUILDDIR}/tmp" \
+    --target-dir="${FLATPAK_DEST}/lib/python${PYTHON_VERSION}/site-packages" \
+    --scripts-dir="${FLATPAK_DEST}/bin" \
+    --enable=Qt \
+    --enable=QtCore \
+    --enable=QtGui \
+    --enable=QtOpenGL \
+    --enable=QtWidgets \
+    --enable=QtSvg \
+    --enable=pyrcc \
+    --no-dbus-python \
+    --no-designer-plugin \
+    --no-docstrings \
+    --no-qml-plugin \
+    --qmake-setting QMAKE_CFLAGS="$CFLAGS" \
+    --qmake-setting QMAKE_CXXFLAGS="$CXXFLAGS" \
+    --qmake-setting QMAKE_LFLAGS="$LDFLAGS"
