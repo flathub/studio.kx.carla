@@ -211,9 +211,6 @@
         "make PREFIX=/app install"
       ],
       "build-options": {
-        "env": {
-          "PYTHONPATH": "/app/lib/python3.9/site-packages"
-        },
         "arch": {
           "aarch64": {
             "env": {
