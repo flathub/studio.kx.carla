@@ -6,7 +6,6 @@ sip-install \
     --qt-shared \
     --concatenate 1 \
     --confirm-license \
-    --debug \
     --verbose \
     --jobs="${FLATPAK_BUILDER_N_JOBS}" \
     --build-dir="${FLATPAK_BUILDER_BUILDDIR}/tmp" \
@@ -14,9 +13,7 @@ sip-install \
     --scripts-dir="${FLATPAK_DEST}/bin" \
     --enable=Qt \
     --enable=QtCore \
-    --enable=QtDBus \
     --enable=QtGui \
-    --enable=QtMultimedia \
     --enable=QtWidgets \
     --enable=QtSvg \
     --enable=pyrcc \
