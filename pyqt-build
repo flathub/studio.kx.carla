@@ -14,6 +14,7 @@ sip-install \
     --enable=Qt \
     --enable=QtCore \
     --enable=QtGui \
+    --enable=QtOpenGL \
     --enable=QtWidgets \
     --enable=QtSvg \
     --enable=pyrcc \
