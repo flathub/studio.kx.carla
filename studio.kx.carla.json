@@ -3,7 +3,7 @@
   "runtime": "org.kde.Platform",
   "runtime-version": "5.15-21.08",
   "sdk": "org.kde.Sdk",
-  "command": "carla",
+  "command": "carla-wrap",
   "rename-desktop-file": "carla.desktop",
   "rename-icon": "carla",
   "finish-args": [
@@ -19,12 +19,7 @@
     "--filesystem=home",
     "--env=TMPDIR=/var/tmp",
     /* On SuSE it seems to be necessary for sound to work */
-    "--env=ALSA_CONFIG_PATH=",
-    "--env=LV2_PATH=$HOME/.lv2:/app/extensions/Plugins/lv2:/app/lib/lv2",
-    "--env=DSSI_PATH=/app/extensions/Plugins/dssi",
-    "--env=VST_PATH=/app/extensions/Plugins/lxvst",
-    "--env=VST3_PATH=$HOME/.vst3:/app/extensions/Plugins/vst3",
-    "--env=LADSPA_PATH=/app/extensions/Plugins/ladspa"
+    "--env=ALSA_CONFIG_PATH="
   ],
   "add-extensions": {
     "org.freedesktop.LinuxAudio.Plugins": {
@@ -220,6 +215,7 @@
         }
       },
       "post-install": [
+        "install -Dm755 carla-wrap.sh ${FLATPAK_DEST}/bin/carla-wrap",
         "install -Dm644 appdata.xml /app/share/appdata/studio.kx.carla.appdata.xml",
         "install -d /app/extensions/Plugins"
       ],
@@ -237,6 +233,10 @@
         {
           "type": "file",
           "path": "appdata.xml"
+        },
+        {
+          "type": "file",
+          "path": "carla-wrap.sh"
         }
       ]
     }
