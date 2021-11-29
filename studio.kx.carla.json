@@ -220,7 +220,8 @@
         "install -d /app/extensions/Plugins"
       ],
       "cleanup": [
-        "/lib/vst/carla.vst/"
+        "/lib/vst/carla.vst/",
+        "/lib/lv2/carla.lv2/"
       ],
       "sources": [
         {
