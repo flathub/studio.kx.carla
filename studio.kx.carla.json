@@ -1,248 +1,244 @@
 {
-  "app-id": "studio.kx.carla",
-  "runtime": "org.kde.Platform",
-  "runtime-version": "5.15-21.08",
-  "sdk": "org.kde.Sdk",
-  "command": "carla-wrap",
-  "rename-desktop-file": "carla.desktop",
-  "rename-icon": "carla",
-  "finish-args": [
-    "--share=ipc",
-    "--socket=x11",
-    "--socket=wayland",
-    "--socket=pulseaudio",
-    /* MIDI */
-    "--device=all",
-    /* For pipewire */
-    "--filesystem=xdg-run/pipewire-0",
-    /* Allow loading, saving files from the home directory (portals don’t work yet) */
-    "--filesystem=home",
-    "--env=TMPDIR=/var/tmp",
-    /* On SuSE it seems to be necessary for sound to work */
-    "--env=ALSA_CONFIG_PATH="
-  ],
-  "add-extensions": {
-    "org.freedesktop.LinuxAudio.Plugins": {
-      "directory": "extensions/Plugins",
-      "version": "21.08",
-      "add-ld-path": "lib",
-      "merge-dirs": "ladspa;dssi;lv2;lxvst;vst3",
-      "subdirectories": true,
-      "no-autodownload": true
-    }
-  },
-  "cleanup": [
-    "/include",
-    "/man",
-    "/share/man",
-    "/share/info",
-    "/lib/pkgconfig",
-    "*.la"
-  ],
-  "build-options": {
-    "env": {
-      "PYTHON": "/usr/bin/python3",
-      "PIP": "/usr/bin/pip3",
-      "PIP_DISABLE_PIP_VERSION_CHECK": "1"
-    }
-  },
-  "modules": [
-    "shared-modules/linux-audio/fluidsynth2.json",
-    {
-      "name": "pyqt",
-      "buildsystem": "simple",
-      "build-commands": [
-        "sh build"
-      ],
-      "sources": [
-        {
-          "type": "archive",
-          "url": "https://files.pythonhosted.org/packages/3b/27/fd81188a35f37be9b3b4c2db1654d9439d1418823916fe702ac3658c9c41/PyQt5-5.15.6.tar.gz",
-          "sha256": "80343bcab95ffba619f2ed2467fd828ffeb0a251ad7225be5fc06dcc333af452",
-          "x-checker-data": {
-            "type": "pypi",
-            "name": "pyqt5"
-          }
-        },
-        {
-          "type": "file",
-          "path": "pyqt-build",
-          "dest-filename": "build"
-        },
-        {
-          "type": "shell",
-          "commands": [
-            "echo '[tool.sip.bindings.QtGui]' >> pyproject.toml",
-            "echo 'disabled-features = [\"PyQt_Desktop_OpenGL\"]' >> pyproject.toml"
-          ],
-          "only-arches": [
-            "aarch64"
-          ]
+    "app-id": "studio.kx.carla",
+    "runtime": "org.kde.Platform",
+    "runtime-version": "5.15-21.08",
+    "sdk": "org.kde.Sdk",
+    "command": "carla-wrap",
+    "rename-desktop-file": "carla.desktop",
+    "rename-icon": "carla",
+    "finish-args": [
+        "--share=ipc",
+        "--socket=x11",
+        "--socket=wayland",
+        "--socket=pulseaudio",
+        "--device=all",
+        "--filesystem=xdg-run/pipewire-0",
+        "--filesystem=home",
+        "--env=TMPDIR=/var/tmp",
+        "--env=ALSA_CONFIG_PATH="
+    ],
+    "add-extensions": {
+        "org.freedesktop.LinuxAudio.Plugins": {
+            "directory": "extensions/Plugins",
+            "version": "21.08",
+            "add-ld-path": "lib",
+            "merge-dirs": "ladspa;dssi;lv2;lxvst;vst3",
+            "subdirectories": true,
+            "no-autodownload": true
         }
-      ],
-      "cleanup": [
-        "/bin"
-      ],
-      "modules": [
-        {
-          "name": "python-pyparsing",
-          "buildsystem": "simple",
-          "build-commands": [
-            "${PIP} install --no-build-isolation --verbose --prefix=${FLATPAK_DEST} ."
-          ],
-          "cleanup": [
-            "*"
-          ],
-          "sources": [
-            {
-              "type": "archive",
-              "url": "https://files.pythonhosted.org/packages/source/p/pyparsing/pyparsing-2.4.7.tar.gz",
-              "sha256": "c203ec8783bf771a155b207279b9bccb8dea02d8f0c9e5f8ead507bc3246ecc1"
-            }
-          ]
-        },
-        {
-          "name": "python-packaging",
-          "buildsystem": "simple",
-          "build-commands": [
-            "${PIP} install --no-build-isolation --verbose --prefix=${FLATPAK_DEST} ."
-          ],
-          "cleanup": [
-            "*"
-          ],
-          "sources": [
-            {
-              "type": "archive",
-              "url": "https://files.pythonhosted.org/packages/source/p/packaging/packaging-20.9.tar.gz",
-              "sha256": "5b327ac1320dc863dca72f4514ecc086f31186744b84a230374cc1fd776feae5"
-            }
-          ]
-        },
-        {
-          "name": "python-toml",
-          "buildsystem": "simple",
-          "build-commands": [
-            "${PIP} install --no-build-isolation --verbose --prefix=${FLATPAK_DEST} ."
-          ],
-          "cleanup": [
-            "*"
-          ],
-          "sources": [
-            {
-              "type": "archive",
-              "url": "https://files.pythonhosted.org/packages/source/t/toml/toml-0.10.2.tar.gz",
-              "sha256": "b3bda1d108d5dd99f4a20d24d9c348e91c4db7ab1b749200bded2f839ccbe68f"
-            }
-          ]
-        },
-        {
-          "name": "sip",
-          "buildsystem": "simple",
-          "build-commands": [
-            "${PIP} install --no-build-isolation --verbose --prefix=${FLATPAK_DEST} ."
-          ],
-          "cleanup": [
-            "*"
-          ],
-          "sources": [
-            {
-              "type": "archive",
-              "url": "https://files.pythonhosted.org/packages/c4/de/76c2927ea8f74dc4909c9affeba4c0191c43a4aefbe2118cc69b2cbd8461/sip-6.4.0.tar.gz",
-              "sha256": "42ec368520b8da4a0987218510b1b520b4981e4405086c1be384733affc2bcb0",
-              "x-checker-data": {
-                "type": "pypi",
-                "name": "sip"
-              }
-            }
-          ]
-        },
-        {
-          "name": "pyqt-sip",
-          "buildsystem": "simple",
-          "build-commands": [
-            "${PIP} install --no-build-isolation --verbose --prefix=${FLATPAK_DEST} ."
-          ],
-          "sources": [
-            {
-              "type": "archive",
-              "url": "https://files.pythonhosted.org/packages/b1/40/dd8f081f04a12912b65417979bf2097def0af0f20c89083ada3670562ac5/PyQt5_sip-12.9.0.tar.gz",
-              "sha256": "d3e4489d7c2b0ece9d203ae66e573939f7f60d4d29e089c9f11daa17cfeaae32",
-              "x-checker-data": {
-                "type": "pypi",
-                "name": "pyqt5-sip"
-              }
-            }
-          ]
-        },
-        {
-          "name": "pyqt-builder",
-          "buildsystem": "simple",
-          "build-commands": [
-            "${PIP} install --no-build-isolation --verbose --prefix=${FLATPAK_DEST} ."
-          ],
-          "cleanup": [
-            "*"
-          ],
-          "sources": [
-            {
-              "type": "archive",
-              "url": "https://files.pythonhosted.org/packages/8b/5f/1bd49787262ddce37b826ef49dcccf5a9970facf0ed363dee5ee233e681d/PyQt-builder-1.12.2.tar.gz",
-              "sha256": "f62bb688d70e0afd88c413a8d994bda824e6cebd12b612902d1945c5a67edcd7",
-              "x-checker-data": {
-                "type": "pypi",
-                "name": "pyqt-builder"
-              }
-            }
-          ]
-        }
-      ]
     },
-    {
-      "name": "carla",
-      "buildsystem": "simple",
-      "build-commands": [
-        "make features",
-        "make PREFIX=/app -j $FLATPAK_BUILDER_N_JOBS",
-        "make PREFIX=/app install"
-      ],
-      "build-options": {
-        "arch": {
-          "aarch64": {
-            "env": {
-              "NOOPT": "true"
-            }
-          }
+    "cleanup": [
+        "/include",
+        "/man",
+        "/share/man",
+        "/share/info",
+        "/lib/pkgconfig",
+        "*.la"
+    ],
+    "build-options": {
+        "env": {
+            "PYTHON": "/usr/bin/python3",
+            "PIP": "/usr/bin/pip3",
+            "PIP_DISABLE_PIP_VERSION_CHECK": "1"
         }
-      },
-      "post-install": [
-        "install -Dm755 carla-wrap.sh ${FLATPAK_DEST}/bin/carla-wrap",
-        "install -Dm644 appdata.xml /app/share/appdata/studio.kx.carla.appdata.xml",
-        "install -d /app/extensions/Plugins"
-      ],
-      "cleanup": [
-        "/lib/vst/carla.vst/",
-        "/lib/lv2/carla.lv2/"
-      ],
-      "sources": [
+    },
+    "modules": [
+        "shared-modules/linux-audio/fluidsynth2.json",
         {
-          "type": "git",
-          "url": "https://github.com/falkTX/Carla.git",
-          "tag": "v2.4.1",
-          "commit": "51028655d09c9a21fc51cadd7bc48210295aa791",
-          "x-checker-data": {
-            "type": "git",
-            "tag-pattern": "^v([\\d.]+)$"
-          }
+            "name": "pyqt",
+            "buildsystem": "simple",
+            "build-commands": [
+                "sh build"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://files.pythonhosted.org/packages/3b/27/fd81188a35f37be9b3b4c2db1654d9439d1418823916fe702ac3658c9c41/PyQt5-5.15.6.tar.gz",
+                    "sha256": "80343bcab95ffba619f2ed2467fd828ffeb0a251ad7225be5fc06dcc333af452",
+                    "x-checker-data": {
+                        "type": "pypi",
+                        "name": "pyqt5"
+                    }
+                },
+                {
+                    "type": "file",
+                    "path": "pyqt-build",
+                    "dest-filename": "build"
+                },
+                {
+                    "type": "shell",
+                    "commands": [
+                        "echo '[tool.sip.bindings.QtGui]' >> pyproject.toml",
+                        "echo 'disabled-features = [\"PyQt_Desktop_OpenGL\"]' >> pyproject.toml"
+                    ],
+                    "only-arches": [
+                        "aarch64"
+                    ]
+                }
+            ],
+            "cleanup": [
+                "/bin"
+            ],
+            "modules": [
+                {
+                    "name": "python-pyparsing",
+                    "buildsystem": "simple",
+                    "build-commands": [
+                        "${PIP} install --no-build-isolation --verbose --prefix=${FLATPAK_DEST} ."
+                    ],
+                    "cleanup": [
+                        "*"
+                    ],
+                    "sources": [
+                        {
+                            "type": "archive",
+                            "url": "https://files.pythonhosted.org/packages/source/p/pyparsing/pyparsing-2.4.7.tar.gz",
+                            "sha256": "c203ec8783bf771a155b207279b9bccb8dea02d8f0c9e5f8ead507bc3246ecc1"
+                        }
+                    ]
+                },
+                {
+                    "name": "python-packaging",
+                    "buildsystem": "simple",
+                    "build-commands": [
+                        "${PIP} install --no-build-isolation --verbose --prefix=${FLATPAK_DEST} ."
+                    ],
+                    "cleanup": [
+                        "*"
+                    ],
+                    "sources": [
+                        {
+                            "type": "archive",
+                            "url": "https://files.pythonhosted.org/packages/source/p/packaging/packaging-20.9.tar.gz",
+                            "sha256": "5b327ac1320dc863dca72f4514ecc086f31186744b84a230374cc1fd776feae5"
+                        }
+                    ]
+                },
+                {
+                    "name": "python-toml",
+                    "buildsystem": "simple",
+                    "build-commands": [
+                        "${PIP} install --no-build-isolation --verbose --prefix=${FLATPAK_DEST} ."
+                    ],
+                    "cleanup": [
+                        "*"
+                    ],
+                    "sources": [
+                        {
+                            "type": "archive",
+                            "url": "https://files.pythonhosted.org/packages/source/t/toml/toml-0.10.2.tar.gz",
+                            "sha256": "b3bda1d108d5dd99f4a20d24d9c348e91c4db7ab1b749200bded2f839ccbe68f"
+                        }
+                    ]
+                },
+                {
+                    "name": "sip",
+                    "buildsystem": "simple",
+                    "build-commands": [
+                        "${PIP} install --no-build-isolation --verbose --prefix=${FLATPAK_DEST} ."
+                    ],
+                    "cleanup": [
+                        "*"
+                    ],
+                    "sources": [
+                        {
+                            "type": "archive",
+                            "url": "https://files.pythonhosted.org/packages/07/4e/0de6d5872145f4cedf187aa8a9069ba91d7e293a82cbbaeabd10c45e9cf0/sip-6.5.0.tar.gz",
+                            "sha256": "a1cf8431a8eb9392b3ff6dc61d832d0447bfdcae5b3e4256a5fa74dbc25b0734",
+                            "x-checker-data": {
+                                "type": "pypi",
+                                "name": "sip"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "pyqt-sip",
+                    "buildsystem": "simple",
+                    "build-commands": [
+                        "${PIP} install --no-build-isolation --verbose --prefix=${FLATPAK_DEST} ."
+                    ],
+                    "sources": [
+                        {
+                            "type": "archive",
+                            "url": "https://files.pythonhosted.org/packages/b1/40/dd8f081f04a12912b65417979bf2097def0af0f20c89083ada3670562ac5/PyQt5_sip-12.9.0.tar.gz",
+                            "sha256": "d3e4489d7c2b0ece9d203ae66e573939f7f60d4d29e089c9f11daa17cfeaae32",
+                            "x-checker-data": {
+                                "type": "pypi",
+                                "name": "pyqt5-sip"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "pyqt-builder",
+                    "buildsystem": "simple",
+                    "build-commands": [
+                        "${PIP} install --no-build-isolation --verbose --prefix=${FLATPAK_DEST} ."
+                    ],
+                    "cleanup": [
+                        "*"
+                    ],
+                    "sources": [
+                        {
+                            "type": "archive",
+                            "url": "https://files.pythonhosted.org/packages/8b/5f/1bd49787262ddce37b826ef49dcccf5a9970facf0ed363dee5ee233e681d/PyQt-builder-1.12.2.tar.gz",
+                            "sha256": "f62bb688d70e0afd88c413a8d994bda824e6cebd12b612902d1945c5a67edcd7",
+                            "x-checker-data": {
+                                "type": "pypi",
+                                "name": "pyqt-builder"
+                            }
+                        }
+                    ]
+                }
+            ]
         },
         {
-          "type": "file",
-          "path": "appdata.xml"
-        },
-        {
-          "type": "file",
-          "path": "carla-wrap.sh"
+            "name": "carla",
+            "buildsystem": "simple",
+            "build-commands": [
+                "make features",
+                "make PREFIX=/app -j $FLATPAK_BUILDER_N_JOBS",
+                "make PREFIX=/app install"
+            ],
+            "build-options": {
+                "arch": {
+                    "aarch64": {
+                        "env": {
+                            "NOOPT": "true"
+                        }
+                    }
+                }
+            },
+            "post-install": [
+                "install -Dm755 carla-wrap.sh ${FLATPAK_DEST}/bin/carla-wrap",
+                "install -Dm644 appdata.xml /app/share/appdata/studio.kx.carla.appdata.xml",
+                "install -d /app/extensions/Plugins"
+            ],
+            "cleanup": [
+                "/lib/vst/carla.vst/",
+                "/lib/lv2/carla.lv2/"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/falkTX/Carla.git",
+                    "tag": "v2.4.1",
+                    "commit": "51028655d09c9a21fc51cadd7bc48210295aa791",
+                    "x-checker-data": {
+                        "type": "git",
+                        "tag-pattern": "^v([\\d.]+)$"
+                    }
+                },
+                {
+                    "type": "file",
+                    "path": "appdata.xml"
+                },
+                {
+                    "type": "file",
+                    "path": "carla-wrap.sh"
+                }
+            ]
         }
-      ]
-    }
-  ]
+    ]
 }
