@@ -93,7 +93,11 @@
                         {
                             "type": "archive",
                             "url": "https://files.pythonhosted.org/packages/source/p/pyparsing/pyparsing-2.4.7.tar.gz",
-                            "sha256": "c203ec8783bf771a155b207279b9bccb8dea02d8f0c9e5f8ead507bc3246ecc1"
+                            "sha256": "c203ec8783bf771a155b207279b9bccb8dea02d8f0c9e5f8ead507bc3246ecc1",
+                            "x-checker-data": {
+                                "type": "pypi",
+                                "name": "pyparsing"
+                            }
                         }
                     ]
                 },
@@ -110,7 +114,11 @@
                         {
                             "type": "archive",
                             "url": "https://files.pythonhosted.org/packages/source/p/packaging/packaging-20.9.tar.gz",
-                            "sha256": "5b327ac1320dc863dca72f4514ecc086f31186744b84a230374cc1fd776feae5"
+                            "sha256": "5b327ac1320dc863dca72f4514ecc086f31186744b84a230374cc1fd776feae5",
+                            "x-checker-data": {
+                                "type": "pypi",
+                                "name": "packaging"
+                            }
                         }
                     ]
                 },
@@ -127,7 +135,11 @@
                         {
                             "type": "archive",
                             "url": "https://files.pythonhosted.org/packages/source/t/toml/toml-0.10.2.tar.gz",
-                            "sha256": "b3bda1d108d5dd99f4a20d24d9c348e91c4db7ab1b749200bded2f839ccbe68f"
+                            "sha256": "b3bda1d108d5dd99f4a20d24d9c348e91c4db7ab1b749200bded2f839ccbe68f",
+                            "x-checker-data": {
+                                "type": "pypi",
+                                "name": "toml"
+                            }
                         }
                     ]
                 },
