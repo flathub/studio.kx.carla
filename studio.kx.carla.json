@@ -224,7 +224,7 @@
             },
             "post-install": [
                 "install -Dm755 carla-wrap.sh ${FLATPAK_DEST}/bin/carla-wrap",
-                "desktop-file-edit --set-key=Exec --set-value=carla-wrap ${FLATPAK_DEST}/share/applications/${FLATPAK_ID}.desktop",
+                "sed -i 's/Exec=carla/Exec=carla-wrap/g' ${FLATPAK_DEST}/share/applications/carla.desktop",
                 "install -Dm644 appdata.xml /app/share/appdata/${FLATPAK_ID}.appdata.xml",
                 "install -d /app/extensions/Plugins"
             ],
