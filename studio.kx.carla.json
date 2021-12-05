@@ -3,7 +3,7 @@
     "runtime": "org.kde.Platform",
     "runtime-version": "5.15-21.08",
     "sdk": "org.kde.Sdk",
-    "command": "carla-wrap",
+    "command": "carla",
     "rename-desktop-file": "carla.desktop",
     "rename-icon": "carla",
     "finish-args": [
@@ -223,8 +223,8 @@
                 }
             },
             "post-install": [
-                "install -Dm755 carla-wrap.sh ${FLATPAK_DEST}/bin/carla-wrap",
-                "sed -i 's/Exec=carla/Exec=carla-wrap/g' ${FLATPAK_DEST}/share/applications/carla.desktop",
+                "mv ${FLATPAK_DEST}/bin/carla ${FLATPAK_DEST}/bin/carla.bin",
+                "install -Dm755 carla-wrap.sh ${FLATPAK_DEST}/bin/carla",
                 "install -Dm644 appdata.xml /app/share/appdata/${FLATPAK_ID}.appdata.xml",
                 "install -d /app/extensions/Plugins"
             ],
