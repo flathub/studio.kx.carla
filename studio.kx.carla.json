@@ -8,11 +8,12 @@
     "rename-icon": "carla",
     "finish-args": [
         "--share=ipc",
-        "--socket=x11",
         "--socket=wayland",
+        "--socket=fallback-x11",
         "--socket=pulseaudio",
         "--device=all",
         "--filesystem=xdg-run/pipewire-0",
+        "--system-talk-name=org.freedesktop.RealtimeKit1",
         "--filesystem=home",
         "--env=TMPDIR=/var/tmp",
         "--env=ALSA_CONFIG_PATH="
