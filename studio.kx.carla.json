@@ -1,7 +1,7 @@
 {
     "app-id": "studio.kx.carla",
     "runtime": "org.kde.Platform",
-    "runtime-version": "5.15-21.08",
+    "runtime-version": "6.2",
     "sdk": "org.kde.Sdk",
     "command": "carla",
     "rename-desktop-file": "carla.desktop",
@@ -53,11 +53,11 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://files.pythonhosted.org/packages/3b/27/fd81188a35f37be9b3b4c2db1654d9439d1418823916fe702ac3658c9c41/PyQt5-5.15.6.tar.gz",
-                    "sha256": "80343bcab95ffba619f2ed2467fd828ffeb0a251ad7225be5fc06dcc333af452",
+                    "url": "https://files.pythonhosted.org/packages/45/d6/36df7171a4cb00580a608bd92ce085f05fff5e04a74eeac0c52d7de0a584/PyQt6-6.2.3.tar.gz",
+                    "sha256": "a9bfcac198fe4b703706f809bb686c7cef5f60a7c802fc145c6b57929c7a6a34",
                     "x-checker-data": {
                         "type": "pypi",
-                        "name": "pyqt5"
+                        "name": "pyqt6"
                     }
                 },
                 {
@@ -173,11 +173,11 @@
                     "sources": [
                         {
                             "type": "archive",
-                            "url": "https://files.pythonhosted.org/packages/c0/86/6b60c6a1b1d10524ed50fc4c6a2989492512bd46292a711318a53b243774/PyQt5_sip-12.9.1.tar.gz",
-                            "sha256": "2f24f299b44c511c23796aafbbb581bfdebf78d0905657b7cee2141b4982030e",
+                            "url": "https://files.pythonhosted.org/packages/61/2b/37c42814d979359c25e5fccd456ac11506fc86d3e6ca0262284a37b71b1e/PyQt6_sip-13.2.1.tar.gz",
+                            "sha256": "b7bce59900b2e0a04f70246de2ccf79ee7933036b6b9183cf039b62eeae2b858",
                             "x-checker-data": {
                                 "type": "pypi",
-                                "name": "pyqt5-sip"
+                                "name": "pyqt6-sip"
                             }
                         }
                     ]

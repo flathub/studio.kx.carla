@@ -11,13 +11,13 @@ sip-install \
     --build-dir="${FLATPAK_BUILDER_BUILDDIR}/tmp" \
     --target-dir="${FLATPAK_DEST}/lib/python${PYTHON_VERSION}/site-packages" \
     --scripts-dir="${FLATPAK_DEST}/bin" \
-    --enable=Qt \
+    --enable=Qt \ # needs to be removed for qt6?
     --enable=QtCore \
     --enable=QtGui \
-    --enable=QtOpenGL \
+    --enable=QtOpenGL \ # needs to be removed for qt6? -> causes build error
     --enable=QtWidgets \
     --enable=QtSvg \
-    --enable=pyrcc \
+    --enable=pyrcc \ # needs to be removed for qt6?
     --no-dbus-python \
     --no-designer-plugin \
     --no-docstrings \
