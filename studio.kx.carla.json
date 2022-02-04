@@ -8,11 +8,12 @@
     "rename-icon": "carla",
     "finish-args": [
         "--share=ipc",
-        "--socket=x11",
         "--socket=wayland",
+        "--socket=x11",
         "--socket=pulseaudio",
         "--device=all",
         "--filesystem=xdg-run/pipewire-0",
+        "--system-talk-name=org.freedesktop.RealtimeKit1",
         "--filesystem=home",
         "--env=TMPDIR=/var/tmp",
         "--env=ALSA_CONFIG_PATH="
@@ -236,8 +237,7 @@
                 {
                     "type": "git",
                     "url": "https://github.com/falkTX/Carla.git",
-                    "tag": "v2.4.1",
-                    "commit": "51028655d09c9a21fc51cadd7bc48210295aa791",
+                    "commit": "afc25ae3137be9cb7addedd16ff45fbe0ab4ea97",
                     "x-checker-data": {
                         "type": "git",
                         "tag-pattern": "^v([\\d.]+)$"
