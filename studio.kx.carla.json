@@ -223,9 +223,9 @@
                 }
             },
             "post-install": [
+                "sed -i 's/<release /<release date=\"2022-02-19\" /g' ${FLATPAK_DEST}/share/appdata/studio.kx.carla.appdata.xml",
                 "mv ${FLATPAK_DEST}/bin/carla ${FLATPAK_DEST}/bin/carla.bin",
                 "install -Dm755 carla-wrap.sh ${FLATPAK_DEST}/bin/carla",
-                "install -Dm644 appdata.xml /app/share/appdata/${FLATPAK_ID}.appdata.xml",
                 "install -d /app/extensions/Plugins"
             ],
             "cleanup": [
@@ -236,16 +236,12 @@
                 {
                     "type": "git",
                     "url": "https://github.com/falkTX/Carla.git",
-                    "tag": "v2.4.1",
-                    "commit": "51028655d09c9a21fc51cadd7bc48210295aa791",
+                    "tag": "v2.4.2",
+                    "commit": "7b8eeef343ae4fd3405361ea06753a26e75f6a89",
                     "x-checker-data": {
                         "type": "git",
                         "tag-pattern": "^v([\\d.]+)$"
                     }
-                },
-                {
-                    "type": "file",
-                    "path": "appdata.xml"
                 },
                 {
                     "type": "file",
