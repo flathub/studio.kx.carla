@@ -81,6 +81,27 @@
             ],
             "modules": [
                 {
+                    "name": "flit_core",
+                    "buildsystem": "simple",
+                    "build-commands": [
+                        "${PIP} install --no-build-isolation --verbose --prefix=${FLATPAK_DEST} ."
+                    ],
+                    "cleanup": [
+                        "*"
+                    ],
+                    "sources": [
+                        {
+                            "type": "archive",
+                            "url": "https://files.pythonhosted.org/packages/15/d1/d8798b83e953fd6f86ca9b50f93eec464a9305b0661469c8234e61095481/flit_core-3.7.1.tar.gz",
+                            "sha256": "14955af340c43035dbfa96b5ee47407e377ee337f69e70f73064940d27d0a44f",
+                            "x-checker-data": {
+                                "type": "pypi",
+                                "name": "flit_core"
+                            }
+                        }
+                    ]
+                },
+                {
                     "name": "python-pyparsing",
                     "buildsystem": "simple",
                     "build-commands": [
@@ -92,8 +113,8 @@
                     "sources": [
                         {
                             "type": "archive",
-                            "url": "https://files.pythonhosted.org/packages/d6/60/9bed18f43275b34198eb9720d4c1238c68b3755620d20df0afd89424d32b/pyparsing-3.0.7.tar.gz",
-                            "sha256": "18ee9022775d270c55187733956460083db60b37d0d0fb357445f3094eed3eea",
+                            "url": "https://files.pythonhosted.org/packages/31/df/789bd0556e65cf931a5b87b603fcf02f79ff04d5379f3063588faaf9c1e4/pyparsing-3.0.8.tar.gz",
+                            "sha256": "7bf433498c016c4314268d95df76c81b842a4cb2b276fa3312cfb1e1d85f6954",
                             "x-checker-data": {
                                 "type": "pypi",
                                 "name": "pyparsing"
@@ -144,6 +165,27 @@
                     ]
                 },
                 {
+                    "name": "ply",
+                    "buildsystem": "simple",
+                    "build-commands": [
+                        "${PIP} install --no-build-isolation --verbose --prefix=${FLATPAK_DEST} ."
+                    ],
+                    "cleanup": [
+                        "*"
+                    ],
+                    "sources": [
+                        {
+                            "type": "archive",
+                            "url": "https://files.pythonhosted.org/packages/e5/69/882ee5c9d017149285cab114ebeab373308ef0f874fcdac9beb90e0ac4da/ply-3.11.tar.gz",
+                            "sha256": "00c7c1aaa88358b9c765b6d3000c6eec0ba42abca5351b095321aef446081da3",
+                            "x-checker-data": {
+                                "type": "pypi",
+                                "name": "ply"
+                            }
+                        }
+                    ]
+                },
+                {
                     "name": "sip",
                     "buildsystem": "simple",
                     "build-commands": [
@@ -155,8 +197,8 @@
                     "sources": [
                         {
                             "type": "archive",
-                            "url": "https://files.pythonhosted.org/packages/de/c1/9ac5596c10f6ce28abc1849ed1b6299b3953af0b6ff21e227024991a517e/sip-6.5.1.tar.gz",
-                            "sha256": "204f0240db8999a749d638a987b351861843e69239b811ec3d1881412c3706a6",
+                            "url": "https://files.pythonhosted.org/packages/c6/08/34642c4db19e9d41f43640547c5a997cb9b12b512f8c61d0d476e8b9e883/sip-6.6.1.tar.gz",
+                            "sha256": "696c575c72144122701171f2cc767fe6cc87050ea755a04909152a8508ae10c3",
                             "x-checker-data": {
                                 "type": "pypi",
                                 "name": "sip"
@@ -173,8 +215,8 @@
                     "sources": [
                         {
                             "type": "archive",
-                            "url": "https://files.pythonhosted.org/packages/c0/86/6b60c6a1b1d10524ed50fc4c6a2989492512bd46292a711318a53b243774/PyQt5_sip-12.9.1.tar.gz",
-                            "sha256": "2f24f299b44c511c23796aafbbb581bfdebf78d0905657b7cee2141b4982030e",
+                            "url": "https://files.pythonhosted.org/packages/a3/82/08a09deda701feb930aa6462f2f22e07cbcb9aa7c1ef361a090221b4587e/PyQt5_sip-12.10.1.tar.gz",
+                            "sha256": "97e008795c453488f51a5c97dbff29cda7841afb1ca842c9e819d8e6cc0ae724",
                             "x-checker-data": {
                                 "type": "pypi",
                                 "name": "pyqt5-sip"
@@ -223,7 +265,7 @@
                 }
             },
             "post-install": [
-                "sed -i 's/<release /<release date=\"2022-02-19\" /g' ${FLATPAK_DEST}/share/appdata/studio.kx.carla.appdata.xml",
+                "sed -i 's/<release /<release date=\"2022-04-15\" /g' ${FLATPAK_DEST}/share/appdata/studio.kx.carla.appdata.xml",
                 "mv ${FLATPAK_DEST}/bin/carla ${FLATPAK_DEST}/bin/carla.bin",
                 "install -Dm755 carla-wrap.sh ${FLATPAK_DEST}/bin/carla",
                 "install -d /app/extensions/Plugins"
@@ -236,8 +278,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/falkTX/Carla.git",
-                    "tag": "v2.4.2",
-                    "commit": "7b8eeef343ae4fd3405361ea06753a26e75f6a89",
+                    "tag": "v2.4.3",
+                    "commit": "f22915f6ec0093a0d27c4b3e3cf27724d5bc536b",
                     "x-checker-data": {
                         "type": "git",
                         "tag-pattern": "^v([\\d.]+)$"
