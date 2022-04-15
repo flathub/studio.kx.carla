@@ -81,6 +81,27 @@
             ],
             "modules": [
                 {
+                    "name": "flit_core",
+                    "buildsystem": "simple",
+                    "build-commands": [
+                        "${PIP} install --no-build-isolation --verbose --prefix=${FLATPAK_DEST} ."
+                    ],
+                    "cleanup": [
+                        "*"
+                    ],
+                    "sources": [
+                        {
+                            "type": "archive",
+                            "url": "https://files.pythonhosted.org/packages/15/d1/d8798b83e953fd6f86ca9b50f93eec464a9305b0661469c8234e61095481/flit_core-3.7.1.tar.gz",
+                            "sha256": "",
+                            "x-checker-data": {
+                                "type": "pypi",
+                                "name": "flit_core"
+                            }
+                        }
+                    ]
+                },
+                {
                     "name": "python-pyparsing",
                     "buildsystem": "simple",
                     "build-commands": [
