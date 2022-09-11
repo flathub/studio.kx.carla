@@ -18,6 +18,7 @@ sip-install \
     --enable=QtWidgets \
     --enable=QtSvg \
     --enable=pyrcc \
+    --enable=pyuic \
     --no-dbus-python \
     --no-designer-plugin \
     --no-docstrings \
