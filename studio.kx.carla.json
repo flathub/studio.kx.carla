@@ -1,7 +1,7 @@
 {
     "app-id": "studio.kx.carla",
     "runtime": "org.kde.Platform",
-    "runtime-version": "5.15-21.08",
+    "runtime-version": "5.15-22.08",
     "sdk": "org.kde.Sdk",
     "command": "carla",
     "rename-desktop-file": "carla.desktop",
