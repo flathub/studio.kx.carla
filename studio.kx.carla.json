@@ -53,8 +53,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://files.pythonhosted.org/packages/e1/57/2023316578646e1adab903caab714708422f83a57f97eb34a5d13510f4e1/PyQt5-5.15.7.tar.gz",
-                    "sha256": "755121a52b3a08cb07275c10ebb96576d36e320e572591db16cfdbc558101594",
+                    "url": "https://files.pythonhosted.org/packages/5c/46/b4b6eae1e24d9432905ef1d4e7c28b6610e28252527cdc38f2a75997d8b5/PyQt5-5.15.9.tar.gz",
+                    "sha256": "dc41e8401a90dc3e2b692b411bd5492ab559ae27a27424eed4bd3915564ec4c0",
                     "x-checker-data": {
                         "type": "pypi",
                         "name": "pyqt5"
@@ -134,8 +134,8 @@
                     "sources": [
                         {
                             "type": "archive",
-                            "url": "https://files.pythonhosted.org/packages/47/d5/aca8ff6f49aa5565df1c826e7bf5e85a6df852ee063600c1efa5b932968c/packaging-23.0.tar.gz",
-                            "sha256": "b6ad297f8907de0fa2fe1ccbd26fdaf387f5f47c7275fedf8cce89f99446cf97",
+                            "url": "https://files.pythonhosted.org/packages/b9/6c/7c6658d258d7971c5eb0d9b69fa9265879ec9a9158031206d47800ae2213/packaging-23.1.tar.gz",
+                            "sha256": "a392980d2b6cffa644431898be54b0045151319d1e7ec34f0cfed48767dd334f",
                             "x-checker-data": {
                                 "type": "pypi",
                                 "name": "packaging"
@@ -197,8 +197,8 @@
                     "sources": [
                         {
                             "type": "archive",
-                            "url": "https://files.pythonhosted.org/packages/fd/9b/8e727256983e5b1d975f8dfce6f477b5ab6bada14a00b07fa3db51fcd6fe/sip-6.7.5.tar.gz",
-                            "sha256": "9655d089e1d0c5fbf66bde11558a874980729132b5bd0c2ae355ac1a7b893ab4",
+                            "url": "https://files.pythonhosted.org/packages/c7/09/68bfefcdc48875e66aabafc946620483d0cd93aba52dde37d2059e5bf927/sip-6.7.8.tar.gz",
+                            "sha256": "7e7186a36818c9d325c82e59ac5b049d9022c2d5783942c38d49497ac8a94c8f",
                             "x-checker-data": {
                                 "type": "pypi",
                                 "name": "sip"
@@ -215,8 +215,8 @@
                     "sources": [
                         {
                             "type": "archive",
-                            "url": "https://files.pythonhosted.org/packages/39/5f/fd9384fdcb9cd0388088899c110838007f49f5da1dd1ef6749bfb728a5da/PyQt5_sip-12.11.0.tar.gz",
-                            "sha256": "b4710fd85b57edef716cc55fae45bfd5bfac6fc7ba91036f1dcc3f331ca0eb39",
+                            "url": "https://files.pythonhosted.org/packages/2a/f1/dde13ef47f3075737af449bf833ed4d56a16bd1762c66c674c3cceacd973/PyQt5_sip-12.12.0.tar.gz",
+                            "sha256": "01bc2d443325505b07d35e4a70d239b4f97b77486e29117fb67f927a15cd8061",
                             "x-checker-data": {
                                 "type": "pypi",
                                 "name": "pyqt5-sip"
@@ -236,8 +236,8 @@
                     "sources": [
                         {
                             "type": "archive",
-                            "url": "https://files.pythonhosted.org/packages/3e/ed/fa5ffe4a72903747cdd5860a46483795edc0b70562015dde42724e9ce00f/PyQt-builder-1.14.0.tar.gz",
-                            "sha256": "6755931c6d2f8940553e0334d10c933ce5cc18b64425e94fda1accf4ff774f59",
+                            "url": "https://files.pythonhosted.org/packages/ee/37/06bc9491c7f84ca776658106a59d3064b1c4c7533a35d547e85fc1e8087f/PyQt-builder-1.15.0.tar.gz",
+                            "sha256": "a90553703897eb41e27c2f1abd31fb9ed304c32ec3271b380015b54ea9762ddd",
                             "x-checker-data": {
                                 "type": "pypi",
                                 "name": "pyqt-builder"
@@ -278,8 +278,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/falkTX/Carla.git",
-                    "tag": "v2.5.3",
-                    "commit": "16b431cecff8544b48d73cc87dc1a8792f3f733c",
+                    "tag": "v2.5.4",
+                    "commit": "621841f68e5a2381ce45a76a6032e763c8c52758",
                     "x-checker-data": {
                         "type": "git",
                         "tag-pattern": "^v([\\d.]+)$"
