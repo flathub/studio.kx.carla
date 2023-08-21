@@ -265,7 +265,7 @@
                 }
             },
             "post-install": [
-                "sed -i 's/<release /<release date=\"2023-06-04\" /g' ${FLATPAK_DEST}/share/appdata/studio.kx.carla.appdata.xml",
+                "sed -i 's/<release /<release date=\"2023-08-04\" /g' ${FLATPAK_DEST}/share/appdata/studio.kx.carla.appdata.xml",
                 "mv ${FLATPAK_DEST}/bin/carla ${FLATPAK_DEST}/bin/carla.bin",
                 "install -Dm755 carla-wrap.sh ${FLATPAK_DEST}/bin/carla",
                 "install -d /app/extensions/Plugins"
@@ -278,8 +278,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/falkTX/Carla.git",
-                    "tag": "v2.5.5",
-                    "commit": "c1c658c00eefad4a5e559ef60f4f185c9e2a50e4",
+                    "tag": "v2.5.6",
+                    "commit": "fcf00a57a78b6275b070450b67f7d554dd68e8d9",
                     "x-checker-data": {
                         "type": "git",
                         "tag-pattern": "^v([\\d.]+)$"
