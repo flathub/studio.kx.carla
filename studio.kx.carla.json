@@ -265,7 +265,7 @@
                 }
             },
             "post-install": [
-                "sed -i 's/<release /<release date=\"2023-08-04\" /g' ${FLATPAK_DEST}/share/appdata/studio.kx.carla.appdata.xml",
+                "sed -i 's/<release /<release date=\"2023-09-30\" /g' ${FLATPAK_DEST}/share/appdata/studio.kx.carla.appdata.xml",
                 "mv ${FLATPAK_DEST}/bin/carla ${FLATPAK_DEST}/bin/carla.bin",
                 "install -Dm755 carla-wrap.sh ${FLATPAK_DEST}/bin/carla",
                 "install -d /app/extensions/Plugins"
