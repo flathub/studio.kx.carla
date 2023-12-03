@@ -1,7 +1,7 @@
 {
     "app-id": "studio.kx.carla",
     "runtime": "org.kde.Platform",
-    "runtime-version": "5.15-22.08",
+    "runtime-version": "5.15-23.08",
     "sdk": "org.kde.Sdk",
     "command": "carla",
     "rename-desktop-file": "carla.desktop",
@@ -20,7 +20,7 @@
     "add-extensions": {
         "org.freedesktop.LinuxAudio.Plugins": {
             "directory": "extensions/Plugins",
-            "version": "22.08",
+            "version": "23.08",
             "add-ld-path": "lib",
             "merge-dirs": "ladspa;dssi;lv2;vst;vst3",
             "subdirectories": true,
