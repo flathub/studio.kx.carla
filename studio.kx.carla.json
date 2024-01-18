@@ -278,8 +278,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/falkTX/Carla.git",
-                    "tag": "v2.5.7",
-                    "commit": "90c1e9b4f78cbcbc41c3dc928e8e6bfd19788331",
+                    "tag": "v2.5.8",
+                    "commit": "4f94d6120209f7605f62200b03fe8e7de84a1b91",
                     "x-checker-data": {
                         "type": "git",
                         "tag-pattern": "^v([\\d.]+)$"
