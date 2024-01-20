@@ -268,6 +268,7 @@
                 "sed -i 's/<release /<release date=\"2023-09-30\" /g' ${FLATPAK_DEST}/share/appdata/studio.kx.carla.appdata.xml",
                 "mv ${FLATPAK_DEST}/bin/carla ${FLATPAK_DEST}/bin/carla.bin",
                 "install -Dm755 carla-wrap.sh ${FLATPAK_DEST}/bin/carla",
+                "mv ${FLATPAK_DEST}/share/mime/packages/{carla,$FLATPAK_ID}.xml",
                 "install -d /app/extensions/Plugins"
             ],
             "cleanup": [
