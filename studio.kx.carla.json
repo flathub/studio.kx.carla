@@ -197,8 +197,8 @@
                     "sources": [
                         {
                             "type": "archive",
-                            "url": "https://files.pythonhosted.org/packages/b1/42/d47a0f4e1b1213ba7319b046a2e543b5d7f79964852cae262f35ca30a50c/sip-6.8.1.tar.gz",
-                            "sha256": "3002df415e168ac3ffe393942dbc7131cb82ade50000e1526f46a88ade26f598",
+                            "url": "https://files.pythonhosted.org/packages/b1/29/06e5036c035f17e0e874d71d4f5968d70aa879b155335d46f645757ff649/sip-6.8.2.tar.gz",
+                            "sha256": "2e65a423037422ccfde095c257703a8ff45cc1c89bdaa294d7819bc836c87639",
                             "x-checker-data": {
                                 "type": "pypi",
                                 "name": "sip"
@@ -278,8 +278,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/falkTX/Carla.git",
-                    "tag": "v2.5.7",
-                    "commit": "90c1e9b4f78cbcbc41c3dc928e8e6bfd19788331",
+                    "tag": "v2.5.8",
+                    "commit": "4f94d6120209f7605f62200b03fe8e7de84a1b91",
                     "x-checker-data": {
                         "type": "git",
                         "tag-pattern": "^v([\\d.]+)$"
