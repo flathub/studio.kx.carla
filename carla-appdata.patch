@@ -1,0 +1,12 @@
+diff --git a/data/appdata.xml.in b/data/appdata.xml.in
+index 7ed75ed..7d4aeb0 100644
+--- a/data/appdata.xml.in
++++ b/data/appdata.xml.in
+@@ -18,6 +18,7 @@
+     </screenshots>
+     <content_rating type="oars-1.1" />
+     <launchable type="desktop-id">studio.kx.carla.desktop</launchable>
++    <developer_name>Carla developers</developer_name>
+     <url type="homepage">https://kx.studio/Applications:Carla</url>
+     <url type="bugtracker">https://github.com/falkTX/Carla/issues</url>
+     <releases>
