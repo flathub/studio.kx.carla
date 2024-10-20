@@ -3,9 +3,12 @@
     "runtime": "org.kde.Platform",
     "runtime-version": "5.15-23.08",
     "sdk": "org.kde.Sdk",
+    "base": "com.riverbankcomputing.PyQt.BaseApp",
+    "base-version": "5.15-23.08",
     "command": "carla",
     "rename-desktop-file": "carla.desktop",
     "rename-icon": "carla",
+    "rename-mime-file": "carla.xml",
     "finish-args": [
         "--share=ipc",
         "--socket=x11",
@@ -27,6 +30,27 @@
             "no-autodownload": true
         }
     },
+    "cleanup-commands": [
+        "/app/cleanup-BaseApp.sh",
+        "rm -fr /app/lib/plugins/PyQt5/libpyqt5qmlplugin.so",
+        "rm -fr /app/lib/python/site-packages/PyQt5/__pycache__",
+        "rm -fr /app/lib/python/site-packages/PyQt5/QtDBus.*",
+        "rm -fr /app/lib/python/site-packages/PyQt5/QtDesigner.*",
+        "rm -fr /app/lib/python/site-packages/PyQt5/QtMultimedia*",
+        "rm -fr /app/lib/python/site-packages/PyQt5/QtNetwork*",
+        "rm -fr /app/lib/python/site-packages/PyQt5/QtQml.*",
+        "rm -fr /app/lib/python/site-packages/PyQt5/QtQuick*",
+        "rm -fr /app/lib/python/site-packages/PyQt5/QtTest*",
+        "rm -fr /app/lib/python/site-packages/PyQt5/QtTextToSpeech*",
+        "rm -fr /app/lib/python/site-packages/PyQt5/QtWeb*",
+        "rm -fr /app/lib/python/site-packages/PyQt5/QtXml*",
+        "rm -fr /app/lib/python/site-packages/ply*",
+        "rm -fr /app/lib/python/site-packages/packaging*",
+        "rm -fr /app/lib/python/site-packages/pyparsing*",
+        "rm -fr /app/lib/python/site-packages/pypackaging*",
+        "rm -fr /app/lib/python/site-packages/pyproject_hooks*",
+        "rm -fr /app/lib/python/site-packages/toml*"
+    ],
     "cleanup": [
         "/include",
         "/man",
@@ -37,6 +61,7 @@
     ],
     "build-options": {
         "env": {
+            "BASEAPP_REMOVE_WEBENGINE": "1",
             "PYTHON": "/usr/bin/python3",
             "PIP": "/usr/bin/pip3",
             "PIP_DISABLE_PIP_VERSION_CHECK": "1"
@@ -44,209 +69,6 @@
     },
     "modules": [
         "shared-modules/linux-audio/fluidsynth2.json",
-        {
-            "name": "pyqt",
-            "buildsystem": "simple",
-            "build-commands": [
-                "sh build"
-            ],
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://files.pythonhosted.org/packages/4d/5d/b8b6e26956ec113ad3f566e02abd12ac3a56b103fcc7e0735e27ee4a1df3/PyQt5-5.15.10.tar.gz",
-                    "sha256": "d46b7804b1b10a4ff91753f8113e5b5580d2b4462f3226288e2d84497334898a",
-                    "x-checker-data": {
-                        "type": "pypi",
-                        "name": "pyqt5"
-                    }
-                },
-                {
-                    "type": "file",
-                    "path": "pyqt-build",
-                    "dest-filename": "build"
-                },
-                {
-                    "type": "shell",
-                    "commands": [
-                        "echo '[tool.sip.bindings.QtGui]' >> pyproject.toml",
-                        "echo 'disabled-features = [\"PyQt_Desktop_OpenGL\"]' >> pyproject.toml"
-                    ],
-                    "only-arches": [
-                        "aarch64"
-                    ]
-                }
-            ],
-            "cleanup": [
-                "/bin"
-            ],
-            "modules": [
-                {
-                    "name": "flit_core",
-                    "buildsystem": "simple",
-                    "build-commands": [
-                        "${PIP} install --no-build-isolation --verbose --prefix=${FLATPAK_DEST} ."
-                    ],
-                    "cleanup": [
-                        "*"
-                    ],
-                    "sources": [
-                        {
-                            "type": "archive",
-                            "url": "https://files.pythonhosted.org/packages/c4/e6/c1ac50fe3eebb38a155155711e6e864e254ce4b6e17fe2429b4c4d5b9e80/flit_core-3.9.0.tar.gz",
-                            "sha256": "72ad266176c4a3fcfab5f2930d76896059851240570ce9a98733b658cb786eba",
-                            "x-checker-data": {
-                                "type": "pypi",
-                                "name": "flit_core"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "python-pyparsing",
-                    "buildsystem": "simple",
-                    "build-commands": [
-                        "${PIP} install --no-build-isolation --verbose --prefix=${FLATPAK_DEST} ."
-                    ],
-                    "cleanup": [
-                        "*"
-                    ],
-                    "sources": [
-                        {
-                            "type": "archive",
-                            "url": "https://files.pythonhosted.org/packages/46/3a/31fd28064d016a2182584d579e033ec95b809d8e220e74c4af6f0f2e8842/pyparsing-3.1.2.tar.gz",
-                            "sha256": "a1bac0ce561155ecc3ed78ca94d3c9378656ad4c94c1270de543f621420f94ad",
-                            "x-checker-data": {
-                                "type": "pypi",
-                                "name": "pyparsing"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "python-packaging",
-                    "buildsystem": "simple",
-                    "build-commands": [
-                        "${PIP} install --no-build-isolation --verbose --prefix=${FLATPAK_DEST} ."
-                    ],
-                    "cleanup": [
-                        "*"
-                    ],
-                    "sources": [
-                        {
-                            "type": "archive",
-                            "url": "https://files.pythonhosted.org/packages/51/65/50db4dda066951078f0a96cf12f4b9ada6e4b811516bf0262c0f4f7064d4/packaging-24.1.tar.gz",
-                            "sha256": "026ed72c8ed3fcce5bf8950572258698927fd1dbda10a5e981cdf0ac37f4f002",
-                            "x-checker-data": {
-                                "type": "pypi",
-                                "name": "packaging"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "python-tomli",
-                    "buildsystem": "simple",
-                    "build-commands": [
-                        "${PIP} install --no-build-isolation --verbose --prefix=${FLATPAK_DEST} ."
-                    ],
-                    "cleanup": [
-                        "*"
-                    ],
-                    "sources": [
-                        {
-                            "type": "archive",
-                            "url": "https://files.pythonhosted.org/packages/c0/3f/d7af728f075fb08564c5949a9c95e44352e23dee646869fa104a3b2060a3/tomli-2.0.1.tar.gz",
-                            "sha256": "de526c12914f0c550d15924c62d72abc48d6fe7364aa87328337a31007fe8a4f",
-                            "x-checker-data": {
-                                "type": "pypi",
-                                "name": "tomli"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "ply",
-                    "buildsystem": "simple",
-                    "build-commands": [
-                        "${PIP} install --no-build-isolation --verbose --prefix=${FLATPAK_DEST} ."
-                    ],
-                    "cleanup": [
-                        "*"
-                    ],
-                    "sources": [
-                        {
-                            "type": "archive",
-                            "url": "https://files.pythonhosted.org/packages/e5/69/882ee5c9d017149285cab114ebeab373308ef0f874fcdac9beb90e0ac4da/ply-3.11.tar.gz",
-                            "sha256": "00c7c1aaa88358b9c765b6d3000c6eec0ba42abca5351b095321aef446081da3",
-                            "x-checker-data": {
-                                "type": "pypi",
-                                "name": "ply"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "sip",
-                    "buildsystem": "simple",
-                    "build-commands": [
-                        "${PIP} install --no-build-isolation --verbose --prefix=${FLATPAK_DEST} ."
-                    ],
-                    "cleanup": [
-                        "*"
-                    ],
-                    "sources": [
-                        {
-                            "type": "archive",
-                            "url": "https://files.pythonhosted.org/packages/99/85/261c41cc709f65d5b87669f42e502d05cc544c24884121bc594ab0329d8e/sip-6.8.3.tar.gz",
-                            "sha256": "888547b018bb24c36aded519e93d3e513d4c6aa0ba55b7cc1affbd45cf10762c",
-                            "x-checker-data": {
-                                "type": "pypi",
-                                "name": "sip"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "pyqt-sip",
-                    "buildsystem": "simple",
-                    "build-commands": [
-                        "${PIP} install --no-build-isolation --verbose --prefix=${FLATPAK_DEST} ."
-                    ],
-                    "sources": [
-                        {
-                            "type": "archive",
-                            "url": "https://files.pythonhosted.org/packages/ee/81/fce2a475aa56c1f49707d9306b930695b6ff078c2242c9f2fd72a3214e1f/PyQt5_sip-12.13.0.tar.gz",
-                            "sha256": "7f321daf84b9c9dbca61b80e1ef37bdaffc0e93312edae2cd7da25b953971d91",
-                            "x-checker-data": {
-                                "type": "pypi",
-                                "name": "pyqt5-sip"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "pyqt-builder",
-                    "buildsystem": "simple",
-                    "build-commands": [
-                        "${PIP} install --no-build-isolation --verbose --prefix=${FLATPAK_DEST} ."
-                    ],
-                    "cleanup": [
-                        "*"
-                    ],
-                    "sources": [
-                        {
-                            "type": "archive",
-                            "url": "https://files.pythonhosted.org/packages/57/09/11d09b4140932960a4e232e04858ceda19d821f8deb350605934f2251c87/pyqt_builder-1.16.2.tar.gz",
-                            "sha256": "bf723cdb7cd23d2512e2acda7bc6b81f00fb05ccc5e9a8846bd34d47514cddb9",
-                            "x-checker-data": {
-                                "type": "pypi",
-                                "name": "pyqt-builder"
-                            }
-                        }
-                    ]
-                }
-            ]
-        },
         {
             "name": "carla",
             "buildsystem": "simple",
@@ -268,7 +90,6 @@
                 "sed -i 's/<release /<release date=\"2024-01-18\" /g' ${FLATPAK_DEST}/share/appdata/studio.kx.carla.appdata.xml",
                 "mv ${FLATPAK_DEST}/bin/carla ${FLATPAK_DEST}/bin/carla.bin",
                 "install -Dm755 carla-wrap.sh ${FLATPAK_DEST}/bin/carla",
-                "mv ${FLATPAK_DEST}/share/mime/packages/{carla,$FLATPAK_ID}.xml",
                 "install -d /app/extensions/Plugins"
             ],
             "cleanup": [
